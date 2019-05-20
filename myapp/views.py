@@ -5,7 +5,7 @@ from rest_framework.response import Response
 from .models import Categoria, Produto, Pedido, Estoque
 from .serializers import CategoriaSerializers, ProdutoSerializers, PedidoSerializers, PedidoListSerializers, EstoqueSerializers
 from rest_framework.authentication import SessionAuthentication, TokenAuthentication
-from rest_framework.permissions import IsAdminUser, IsAuthenticated, AllowAny
+from rest_framework.permissions import IsAdminUser, IsAuthenticated, DjangoModelPermissions
 from django_filters import rest_framework as filters
 from trello import TrelloApi
 
@@ -24,7 +24,7 @@ class CategoriaList(generics.ListCreateAPIView):
     queryset = Categoria.objects.all()
     serializer_class = CategoriaSerializers
     authentication_classes = [SessionAuthentication, TokenAuthentication,]
-    permission_classes = (IsAdminUser,)
+    permission_classes = (DjangoModelPermissions,)
     filter_backends = (filters.DjangoFilterBackend,)
     filter_fields = '__all__'
 
