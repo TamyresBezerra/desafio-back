@@ -54,7 +54,7 @@ class ProdutoDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Produto.objects.all()
     serializer_class = ProdutoSerializers
     authentication_classes = [SessionAuthentication, TokenAuthentication]
-    permission_classes = (IsAdminUser,)
+    permission_classes = (DjangoModelPermissions,)
     filter_backends = (filters.DjangoFilterBackend,)
     filter_fields = '__all__'
 
