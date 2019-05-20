@@ -15,7 +15,7 @@ def cad_pedido_trello(dados, valor_total):
     produtos = " "
     for produto in dados.produtos.all():
         produtos = produtos+'\n'+str(produto)
-    card = trello.cards.new('Pedido ' + str(dados.id), '5cdeee36a3d935459b57d978', 'Cliente: \n' + 'nome: ' + str(dados.user.first_name) + ' ' + str(dados.user.last_name) + '\n' + 'email: ' + str(dados.user.email) + '\n\n' + 'Componentes: \n' + produtos + '\n\n' + 'Valor Total: ' + str(valor_total))
+    card = trello.cards.new('Pedido ' + str(dados.id), '5cdeee36a3d935459b57d978', 'Cliente: \n\n' + 'nome: ' + str(dados.user.username) + '\n' + 'email: ' + str(dados.user.email) + '\n\n' + 'Componentes: \n' + produtos + '\n\n' + 'Valor Total: ' + str(valor_total))
     return card['id']
 
 
